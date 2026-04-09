@@ -28,6 +28,6 @@ const gatewayStack = new FastApiStack(app, 'ApiGatewayStack');
 
 new ProductService(app, 'productsMicroService', {
     httpApi : gatewayStack.httpApi,
-    deployementEnv: 'dev'
+    deployementEnv: 'dev' 
 })
 
