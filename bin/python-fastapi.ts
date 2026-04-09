@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as cdk from 'aws-cdk-lib/core';
 import { ProductService } from '../lib/constructs/product-service';
-import { FastApiStack} from '../lib/apiGateway';
+import { FastApiStack } from '../lib/apiGateway';
 import { ProductDatabase } from '../lib/constructs/database';
 
 const app = new cdk.App();
@@ -27,7 +27,11 @@ const app = new cdk.App();
 const gatewayStack = new FastApiStack(app, 'ApiGatewayStack');
 
 new ProductService(app, 'productsMicroService', {
-    httpApi : gatewayStack.httpApi,
-    deployementEnv: 'dev' 
+    httpApi: gatewayStack.httpApi,
+    deployementEnv: 'dev',
+    env: {
+        account: process.env.CDK_DEFAULT_ACCOUNT,
+        region: process.env.CDK_DEFAULT_REGION
+    }
 })
 
