@@ -29,7 +29,7 @@ const env = {
 }
 
 
-const gatewayStack = new FastApiStack(app, 'ApiGatewayStack');
+const gatewayStack = new FastApiStack(app, 'ApiGatewayStack',{env:env});
 
 new ProductService(app, 'productsMicroService', {
     httpApi: gatewayStack.httpApi,
