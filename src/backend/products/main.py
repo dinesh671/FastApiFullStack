@@ -6,11 +6,11 @@ from mangum import Mangum
 from models import Item
 # from dotenv import load_dotenv
 
-app = FastAPI(root_path='/products')
+app = FastAPI()
 
 
 # Initialize DynamoDB Client
-table_name = os.environ.get("TABLE_NAME", "ProductsData")
+table_name = os.environ.get("TABLE_NAME")
 dynamodb = boto3.resource("dynamodb")
 table = dynamodb.Table(table_name)
 
@@ -49,4 +49,4 @@ async def upadate_products(item: Item):
     return {"message": "updated the product"}
 
 
-handler = Mangum(app, lifespan="off")
+handler = Mangum(app, lifespan="off", api_gateway_base_path="/products")
