@@ -1,10 +1,10 @@
 import os
 import boto3
-from botocore.exceptions import ClientError
+# from botocore.exceptions import ClientError
 from fastapi import FastAPI, HTTPException
 from mangum import Mangum
 from models import Item
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 app = FastAPI()
 
