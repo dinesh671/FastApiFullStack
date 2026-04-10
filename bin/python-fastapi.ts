@@ -23,15 +23,17 @@ const app = new cdk.App();
 
 // const myStack = new cdk.Stack(app, 'ProductService');
 
+const env = {
+    account: process.env.CDK_DEFAULT_ACCOUNT,
+    region: process.env.CDK_DEFAULT_REGION
+}
+
 
 const gatewayStack = new FastApiStack(app, 'ApiGatewayStack');
 
 new ProductService(app, 'productsMicroService', {
     httpApi: gatewayStack.httpApi,
     deployementEnv: 'dev',
-    env: {
-        account: process.env.CDK_DEFAULT_ACCOUNT,
-        region: process.env.CDK_DEFAULT_REGION
-    }
+    env: env
 })
 
