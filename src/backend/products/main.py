@@ -6,7 +6,7 @@ from mangum import Mangum
 from models import Item
 # from dotenv import load_dotenv
 
-app = FastAPI()
+app = FastAPI(root_path='/products')
 
 
 # Initialize DynamoDB Client
