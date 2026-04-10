@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as iam from 'aws-cdk-lib/aws-iam'
 import * as path from 'path';
 import { ProductDatabase } from './database';
 import * as apigwv2 from 'aws-cdk-lib/aws-apigatewayv2';
@@ -37,6 +38,11 @@ export class ProductService extends cdk.Stack {
             },
             // NO BUNDLING HERE: GitHub Actions handles it!
             code: lambda.Code.fromAsset(entryPath),
+            // roleName: cdk.PhysicalName.GENERATE_IF_NEEDED,
+            role: new iam.Role(this, 'ProductsHandlerServiceRole', {
+                assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
+                roleName: cdk.PhysicalName.GENERATE_IF_NEEDED,   // ← Important
+            }),
         });
 
         const productIntegration = new HttpLambdaIntegration('ProductInt', this.handler);
