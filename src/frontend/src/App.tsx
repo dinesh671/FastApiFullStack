@@ -1,11 +1,11 @@
 import './App.css'
 import { LoginPage } from './Components/LoginPage'
-import { Products } from './Components/Products'
 import { Route, Routes } from 'react-router-dom'
 import Home from './screens/Home'
 import Layout from './screens/Layout'
 import OrderScreen from './screens/OrderScreen'
 import Cart from './screens/Cart'
+import SignupPage from './Components/SignupPage'
 
 export default function App() {
 
@@ -15,6 +15,7 @@ export default function App() {
       <Route path='/' element={<Layout/>}>
           <Route index element={<Home/>}/>
           <Route path='login' element={<LoginPage/>}/>
+          <Route path='signup' element={<SignupPage/>}/>
           <Route path='orders' element={<OrderScreen/>}/>
           <Route path='cart' element={<Cart/>}/>
       </Route>

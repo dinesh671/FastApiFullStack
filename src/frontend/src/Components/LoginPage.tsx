@@ -1,6 +1,8 @@
 import logo from "../assets/react.svg";
 import { FaLock } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
+import { Link } from "react-router-dom";
+import * as schema from '../lib/schema'
 
 export const LoginPage = () => {
   return (
@@ -11,14 +13,14 @@ export const LoginPage = () => {
         <h1>Welcome back</h1>
         <p className=" text-gray-500">
           Don't have an account yet?{" "}
-          <span className="text-black cursor-pointer">Sign up</span>
+          <Link to='/signup' className="text-black cursor-pointer">Sign up</Link>
         </p>
       </div>
       <div className="m-4">
         <div className="flex items-center mb-4 gap-1 bg-white p-2 rounded ">
           <MdMail/>
           <input type="text" placeholder="Email" className=" outline-0"/>
-        </div>
+        </div> 
         <div className="flex items-center mb-4 gap-1 bg-white p-2">
           <FaLock/>
           <input type="password" placeholder="Password" className="outline-0"/>

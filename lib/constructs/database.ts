@@ -49,10 +49,10 @@ export class ProductDatabase extends cdk.Stack {
             chunks.push(putRequests.slice(i, i + 25));
         }
 
+        
         // 5. Create a Custom Resource for each chunk
         chunks.forEach((chunk, index) => {
-            new AwsCustomResource(this, `InitialSeedChunk${index}`, {
-                onCreate: {
+            const sdkCall = {
                     service: 'DynamoDB',
                     action: 'batchWriteItem',
                     parameters: {
@@ -62,7 +62,10 @@ export class ProductDatabase extends cdk.Stack {
                     },
                     // We add a version suffix (v2) to force a fresh attempt
                     physicalResourceId: PhysicalResourceId.of(`seed-data-chunk-${index}`),
-                },
+                }
+            new AwsCustomResource(this, `InitialSeedChunk${index}`, {
+                onCreate: sdkCall,
+                onUpdate:sdkCall,
                 policy: AwsCustomResourcePolicy.fromSdkCalls({
                     resources: [this.table.tableArn],
                 }),
