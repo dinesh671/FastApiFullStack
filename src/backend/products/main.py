@@ -16,7 +16,7 @@ table = dynamodb.Table(table_name)
 
 
 @app.get("/")
-def get_data():
+def get_data(): 
     # Replace in-memory logic with DynamoDB Scan
     response = table.scan()
     return response.get("Items", [])
