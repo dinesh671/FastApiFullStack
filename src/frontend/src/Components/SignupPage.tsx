@@ -1,27 +1,28 @@
 import logo from "../assets/react.svg";
 import { FaLock, FaUser } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
-import { zodResolver } from "zod";
-import { Link } from "react-router-dom";
-import type { signup } from "../types/user";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { data, Link } from "react-router-dom";
+import type { SignupType } from "../types/user";
 import { useForm } from "react-hook-form";
 import { signupSchema } from "../lib/schema";
 import { useState } from "react";
 
 export default function SignupPage() {
-  const [formData, setFormData] = useState({ signupSchema });
-
+  const [formData, setFormData] = useState<SignupType>();
+  
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<signup>({
+  } = useForm<SignupType>({
     resolver: zodResolver(signupSchema),
     mode: "onTouched",
   });
 
   return (
-    <form className="container h-screen flex items-center justify-center">
+    <form onSubmit={handleSubmit((Data)=> setFormData(Data))}
+    className="container h-screen flex items-center justify-center" >
       <div className="container flex justify-center items-center flex-col p-8 w-2/6 bg-blue-100">
         <img src={logo} alt="" />
         <div className=" text-center heading m-4">
@@ -75,11 +76,11 @@ export default function SignupPage() {
               type="password"
               placeholder="Confirm Password"
               className="outline-0 pl-1"
-              {...register("confirm_password")}
+              {...register("confirmPassword")}
             />
           </div>
-          {errors.confirm_password && (
-            <p className="text-red-500">{errors.confirm_password.message}</p>
+          {errors.confirmPassword && (
+            <p className="text-red-500">{errors.confirmPassword.message}</p>
           )}
           <button
             type="submit"

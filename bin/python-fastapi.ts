@@ -3,6 +3,7 @@ import * as cdk from 'aws-cdk-lib/core';
 import { ProductService } from '../lib/constructs/product-service';
 import { FastApiStack } from '../lib/apiGateway';
 import { ProductDatabase } from '../lib/constructs/database';
+import { UserService } from '../lib/constructs/user-service';
 
 const app = new cdk.App();
 // new PythonFastapiStack(app, 'PythonFastapiStack', {
@@ -32,6 +33,12 @@ const env = {
 const gatewayStack = new FastApiStack(app, 'ApiGatewayStack',{env:env});
 
 new ProductService(app, 'productsMicroService', {
+    httpApi: gatewayStack.httpApi,
+    deployementEnv: 'dev',
+    env: env
+})
+
+new UserService(app, 'userMicroService', {
     httpApi: gatewayStack.httpApi,
     deployementEnv: 'dev',
     env: env
