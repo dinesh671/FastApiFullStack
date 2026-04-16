@@ -33,6 +33,12 @@ export class UserService extends cdk.Stack {
         // Point to the folder where GitHub Actions will install the libraries
         const entryPath = path.join(process.cwd(), 'src', 'backend', 'user');
 
+        const commonLayer = new lambda.LayerVersion(this, 'CommonDepsLayer', {
+            code: lambda.Code.fromAsset('src/backend/common_layer'),
+            compatibleRuntimes: [lambda.Runtime.PYTHON_3_11],
+            description: 'Shared dependencies for all microservices',
+        });
+
         this.handler = new lambda.Function(this, 'User-handler', {
             functionName: `user-handler-${props.deployementEnv}`,
             runtime: lambda.Runtime.PYTHON_3_11,
@@ -45,7 +51,7 @@ export class UserService extends cdk.Stack {
             },
             // NO BUNDLING HERE: GitHub Actions handles it!
             code: lambda.Code.fromAsset(entryPath),
-            // roleName: cdk.PhysicalName.GENERATE_IF_NEEDED,
+            layers:[commonLayer],
             role: role
         });
 
