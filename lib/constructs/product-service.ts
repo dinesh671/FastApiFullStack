@@ -58,7 +58,7 @@ export class ProductService extends cdk.Stack {
         const productIntegration = new HttpLambdaIntegration('ProductInt', this.handler);
 
         props.httpApi.addRoutes({
-            path: '/{proxy+}', // Simplified proxy to let FastAPI handle routes
+            path: '/products/{proxy+}', // Simplified proxy to let FastAPI handle routes
             methods: [apigwv2.HttpMethod.ANY],
             integration: productIntegration,
         });
