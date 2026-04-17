@@ -1,6 +1,6 @@
 import os
 import boto3
-# from botocore.exceptions import ClientError
+from botocore.exceptions import ClientError
 from fastapi import FastAPI, HTTPException
 from mangum import Mangum
 from models import Item
@@ -23,7 +23,7 @@ def get_data():
 
 
 @app.get("/{id}")
-def get_data_by_id(id: str):
+def get_data_by_id(id: str): 
     response = table.get_item(Key={"pk": id})
     if "Item" not in response:
         raise HTTPException(status_code=404, detail="Product not found")

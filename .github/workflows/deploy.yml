@@ -31,7 +31,7 @@ jobs:
           mkdir -p src/backend/common_layer/python
           # Install all requirements from your backend folder into this layer folder
           pip install -r src/backend/requirements.txt -t src/backend/common_layer/python/
-
+      
 
       # - name: Install user Lambda Dependencies
       #   run: |
