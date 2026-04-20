@@ -25,13 +25,13 @@ jobs:
           aws-region: ap-south-1
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v5 
         with:
           python-version: '3.9'
-
+          
       - name: Install boto3
         run: pip install boto3
 
       - name: Run Seed Script
         # Passing the table name from the manual input to the script
-        run: python src/seed/seed.py ${{ github.event.inputs.target_table }}
+        run: python ./src/seed/seed.py ${{ github.event.inputs.target_table }}

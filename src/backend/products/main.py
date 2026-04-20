@@ -4,13 +4,15 @@ from botocore.exceptions import ClientError
 from fastapi import FastAPI, HTTPException
 from mangum import Mangum
 from models import Item
-# from dotenv import load_dotenv
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI()
 
 
 # Initialize DynamoDB Client
-table_name = os.environ.get("TABLE_NAME")
+table_name = os.getenv("PRODUCT_DATA")
 dynamodb = boto3.resource("dynamodb")
 table = dynamodb.Table(table_name)
 
@@ -19,7 +21,7 @@ table = dynamodb.Table(table_name)
 def get_data(): 
     # Replace in-memory logic with DynamoDB Scan
     response = table.scan()
-    return response.get("Items", [])
+    return response
 
 
 @app.get("/{id}")
