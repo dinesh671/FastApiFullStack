@@ -8,7 +8,7 @@ def seed_data():
     table = dynamodb.Table('ProductsData') # Update to your actual table name
 
     # Load your JSON file
-    with open('seed/data.json') as f:
+    with open('data.json') as f:
         data = json.load(f)
 
     # Use batch_writer to handle multiple items efficiently
