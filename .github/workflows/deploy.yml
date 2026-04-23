@@ -2,7 +2,7 @@ name: Deploy FastAPI Microservice
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
 
 permissions:
   id-token: write
@@ -15,16 +15,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      
+        
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Setup Node.js (for CDK)
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Build Shared Lambda Layer
         run: |
@@ -32,7 +32,6 @@ jobs:
           mkdir -p src/backend/common_layer/python
           # Install all requirements from your backend folder into this layer folder
           pip install -r src/backend/requirements.txt -t src/backend/common_layer/python/
-      
 
       # - name: Install user Lambda Dependencies
       #   run: |
@@ -43,8 +42,6 @@ jobs:
       #   run: |
       #     cd src/backend/auth
       #     ppip install -r src/backend/auth/requirements.txt -t src/backend/auth/
-          
-      
 
       - name: Install CDK and Deploy
         run: |

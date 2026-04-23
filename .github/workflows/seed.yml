@@ -7,7 +7,7 @@ on:
       target_table:
         description: 'DynamoDB Table Name'
         required: true
-        default: 'YourDefaultTableName'
+        default: 'ProductsData'
 
 jobs:
   seed:
@@ -34,4 +34,4 @@ jobs:
 
       - name: Run Seed Script
         # Passing the table name from the manual input to the script
-        run: python ./src/seed/seed.py ${{ github.event.inputs.target_table }}
+        run: python src/seed/seed.py ${{ github.event.inputs.target_table }}
