@@ -1,7 +1,8 @@
-import type products from "../types/product";
+import type productProps from "../types/product";
 import { FcRating } from "react-icons/fc";
 
-export default function Card({ product }: products) {
+
+export default function Card(product:productProps) {
   return (
     <div className="card w-87.5 flex flex-col items-center gap-6">
       <div className="card_upper w-2/3 h-1/2">

@@ -2,7 +2,7 @@ import logo from "../assets/react.svg";
 import { FaLock, FaUser } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { data, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import type { SignupType } from "../types/user";
 import { useForm } from "react-hook-form";
 import { signupSchema } from "../lib/schema";
@@ -11,6 +11,8 @@ import { useState } from "react";
 export default function SignupPage() {
   const [formData, setFormData] = useState<SignupType>();
   
+  console.log(formData)
+
   const {
     register,
     handleSubmit,

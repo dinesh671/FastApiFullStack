@@ -2,7 +2,7 @@ import logo from "../assets/react.svg";
 import { FaLock } from "react-icons/fa";
 import { MdMail } from "react-icons/md";
 import { Link } from "react-router-dom";
-import * as schema from '../lib/schema'
+// import * as schema from '../lib/schema'
 
 export const LoginPage = () => {
   return (

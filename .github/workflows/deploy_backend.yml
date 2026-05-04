@@ -1,8 +1,6 @@
 name: Deploy FastAPI Microservice
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
 
 permissions:
   id-token: write
@@ -33,15 +31,15 @@ jobs:
           # Install all requirements from your backend folder into this layer folder
           pip install -r src/backend/requirements.txt -t src/backend/common_layer/python/
 
-      # - name: Install user Lambda Dependencies
-      #   run: |
-      #     cd src/backend/user
-      #     pip install -r requirements.txt -t src/backend/user/
+      - name: Install user Lambda Dependencies
+        run: |
+          cd src/backend/user
+          pip install -r requirements.txt -t src/backend/user/
 
-      # - name: Install Auth Lambda Dependencies
-      #   run: |
-      #     cd src/backend/auth
-      #     ppip install -r src/backend/auth/requirements.txt -t src/backend/auth/
+      - name: Install Auth Lambda Dependencies
+        run: |
+          cd src/backend/auth
+          ppip install -r src/backend/auth/requirements.txt -t src/backend/auth/
 
       - name: Install CDK and Deploy
         run: |

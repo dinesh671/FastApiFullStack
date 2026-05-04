@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type products from "../types/product";
 import Card from "./Card";
+// import type { any } from "zod";
 
 export const Products = () => {
   const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ export const Products = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://127.0.0.1:8000/product/getproducts",
+          "https://v9n5l0waei.execute-api.ap-south-1.amazonaws.com/dev/products/",
         );
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

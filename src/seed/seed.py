@@ -9,7 +9,7 @@ def seed_data():
 
     # Load your JSON file
     with open('data.json') as f:
-        data = json.load(f)
+        data = json.load(f) 
 
     # Use batch_writer to handle multiple items efficiently
     with table.batch_writer() as batch:

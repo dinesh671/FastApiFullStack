@@ -6,3 +6,8 @@ export default interface products {
     rating:{ rate: number, count: number }
     title:string
 }
+
+export interface productProps {
+    product:products
+}
+
