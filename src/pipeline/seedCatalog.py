@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 
 
+
 def handler(event,context):
     event
     load_dotenv()
@@ -11,5 +12,10 @@ def handler(event,context):
     table_name = os.getenv("PRODUCT_DATA")
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table()
+
+    # with table.batch_writer() as batch:
+    #     for i in range(data)
+    
+    
 
     return {}

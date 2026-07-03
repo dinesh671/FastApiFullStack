@@ -26,7 +26,7 @@ export const LoginPage = () => {
           <input type="password" placeholder="Password" className="outline-0"/>
         </div>
         <button type="submit" className="text-center bg-black text-white w-full text-md p-2 rounded">Submit</button>
-      </div>
+      </div>  
       </div>
     </div>
   );

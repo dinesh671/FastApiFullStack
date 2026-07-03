@@ -6,6 +6,7 @@ import Layout from './screens/Layout'
 import OrderScreen from './screens/OrderScreen'
 import Cart from './screens/Cart'
 import SignupPage from './Components/SignupPage'
+import Search from './Components/Search'
 
 export default function App() {
 
@@ -18,6 +19,7 @@ export default function App() {
           <Route path='signup' element={<SignupPage/>}/>
           <Route path='orders' element={<OrderScreen/>}/>
           <Route path='cart' element={<Cart/>}/>
+          <Route path='search' element={<Search/>}/>
       </Route>
     </Routes>
 

@@ -1,2 +1,16 @@
-@import 'tailwindcss'
+@import 'tailwindcss';
 
+.gemini-search-page {
+  /* Vibrant Deep Blue to Soft AI Purple and Cyan */
+  background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 30%, #4361ee 60%, #48cae4 100%);
+  background-size: 400% 400%;
+  animation: geminiGradientShift 15s ease infinite;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+@keyframes geminiGradientShift {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
